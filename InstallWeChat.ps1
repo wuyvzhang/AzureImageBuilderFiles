@@ -11,5 +11,5 @@
  $WeComEXE = 'WeCom.exe'
  $outputPath = $LocalPath + '\' + $WeComEXE
  Invoke-WebRequest -Uri $WeComURL -OutFile $outputPath
- Start-Process -FilePath WeCom.exe -Args "/S" -Wait
+ Start-Process -FilePath WeCom.exe -Args "/S"
  write-host 'AIB Customization: Finished Install WeComEXE' 
