@@ -17,7 +17,7 @@
  $SAPMSGoutputPath = $LocalPath + '\' + $SAPMSG
  Invoke-WebRequest -Uri $SAPMSGURL -OutFile $SAPMSGoutputPath
  write-host 'AIB Customization: Starting Install the SAPGUI'
- Start-Process -FilePath $outputPath -Args "/Silent" -Wait
+ Start-Process -FilePath $outputPath -Args "/Silent"
  write-host 'AIB Customization: Starting Install the SAPGUI'
  write-host 'AIB Customization: Copy Config file to Destination'
  Copy-Item -Path $serviceoutputPath -Destination "C:\Windows\System32\drivers\etc\" -Force
