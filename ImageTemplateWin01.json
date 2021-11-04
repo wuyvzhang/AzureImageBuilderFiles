@@ -27,7 +27,7 @@
             "identity": {
                 "type": "UserAssigned",
                 "userAssignedIdentities": {
-                    "/subscriptions/e5a2e705-e06f-454e-bbce-41d3bbeb1b9f/resourcegroups/ABITest-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aibIdentity": {}
+                    "<imgBuilderId>": {}
                 }
             },
             "properties": {
@@ -73,14 +73,20 @@
                     },
                     {
                         "type": "PowerShell",
-                        "name": "WVD_Script",
-                        "scriptUri": "https://raw.githubusercontent.com/wuyvzhang/AzureImageBuilderFiles/main/Optimize_OS_for_WVD.ps1",
+                        "name": "Install_SAPGUI",
+                        "scriptUri": "https://raw.githubusercontent.com/wuyvzhang/AzureImageBuilderFiles/main/InstallSAPGUI.ps1",
                         "runElevated": true
                     },
                     {
                         "type": "PowerShell",
                         "name": "Install_Teams",
                         "scriptUri": "https://raw.githubusercontent.com/wuyvzhang/AzureImageBuilderFiles/main/installTeams.ps1",
+                        "runElevated": true
+                    },
+                    {
+                        "type": "PowerShell",
+                        "name": "Install_WaterMark",
+                        "scriptUri": "https://raw.githubusercontent.com/wuyvzhang/AzureImageBuilderFiles/main/watermark.ps1",
                         "runElevated": true
                     },
                     {
@@ -99,14 +105,20 @@
                         "type": "WindowsRestart",
                         "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                         "restartTimeout": "5m"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "inline": [
+                            "Sleep 100"
+                        ]
                     }
                 ],
                 "distribute": [
                     {
                         "type": "ManagedImage",
-                        "imageId": "/subscriptions/e5a2e705-e06f-454e-bbce-41d3bbeb1b9f/resourceGroups/ABITest-RG/providers/Microsoft.Compute/images/Win1020h2",
-                        "location": "southeastasia",
-                        "runOutputName": "winSvrSigR01",
+                        "imageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/images/<imageName>",
+                        "location": "<region>",
+                        "runOutputName": "<runOutputName>",
                         "artifactTags": {
                             "source": "azVmImageBuilder",
                             "baseosimg": "Windows1020H2"
