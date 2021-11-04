@@ -102,6 +102,13 @@
                         "runElevated": true
                     },
                     {
+                        "type": "PowerShell",
+                        "name": "OptimizeOS",
+                        "runElevated": true,
+                        "runAsSystem": true,
+                        "scriptUri": "https://raw.githubusercontent.com/wuyvzhang/AzureImageBuilderFiles/main/Optimize_OS_for_WVD.ps1"
+                    },
+                    {
                         "type": "WindowsRestart",
                         "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                         "restartTimeout": "5m"
